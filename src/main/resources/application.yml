@@ -1,12 +1,12 @@
 spring:
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3308/daeching?characterEncoding=UTF-8
-    username: root
-    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db1.cx60cjstlv81.ap-northeast-2.rds.amazonaws.com:3306/daeching?characterEncoding=UTF-8
+    username: admin
+    password: admin123
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
 server:
   port: 8081

@@ -29,8 +29,7 @@ public class UserEntity {
 
     private String password;
 
-    @Enumerated(value = EnumType.STRING)
-    private Role role;
+    private String role;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default

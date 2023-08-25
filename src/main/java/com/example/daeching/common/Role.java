@@ -1,5 +1,5 @@
 package com.example.daeching.common;
 
 public enum Role {
-    WORKER, COMPANY
+    구인자, 구직자
 }

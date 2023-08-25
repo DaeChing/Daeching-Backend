@@ -14,5 +14,5 @@ public class SignUpDto {
     private String userName;
     private String loginId;
     private String password;
-    private Role role;
+    private String role;
 }
