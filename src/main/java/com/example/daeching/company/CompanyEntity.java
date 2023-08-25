@@ -1,6 +1,7 @@
 package com.example.daeching.company;
 
 import com.example.daeching.resume.ResumeEntity;
+import com.example.daeching.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,6 +21,10 @@ public class CompanyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long companyId;
+
+    private Long score;
+
+    private String imageUrl;
 
     private String name;
 
@@ -45,5 +50,6 @@ public class CompanyEntity {
     @Builder.Default
     List<ResumeEntity> resumeEntityList = new ArrayList<>();
 
-
+    @OneToOne(mappedBy = "company", fetch = FetchType.LAZY)
+    UserEntity user;
 }

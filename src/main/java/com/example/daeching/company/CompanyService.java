@@ -1,5 +1,6 @@
 package com.example.daeching.company;
 
+import com.example.daeching.company.dto.CompanyDto;
 import com.example.daeching.company.dto.RecruitmentsDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ public class CompanyService {
 
     public void registerRecruitments(RecruitmentsDto recruitmentsDto) {
         CompanyEntity companyEntity = CompanyEntity.builder()
+                .score(recruitmentsDto.getScore())
+                .imageUrl(recruitmentsDto.getImageUrl())
                 .name(recruitmentsDto.getName())
                 .introduction(recruitmentsDto.getIntroduction())
                 .mainTask(recruitmentsDto.getMainTask())
@@ -22,5 +25,21 @@ public class CompanyService {
                 .build();
 
         companyRepository.save(companyEntity);
+    }
+
+    public CompanyDto viewCompanyDetail(Long companyId) {
+        CompanyEntity companyEntity = companyRepository.findById(companyId).orElseThrow();
+
+        return CompanyDto.builder()
+                .companyId(companyEntity.getCompanyId())
+                .imageUrl(companyEntity.getImageUrl())
+                .score(companyEntity.getScore())
+                .introduction(companyEntity.getIntroduction())
+                .mainTask(companyEntity.getMainTask())
+                .qualificationRequirements(companyEntity.getQualificationRequirements())
+                .preferredQualifications(companyEntity.getPreferredQualifications())
+                .recruitmentProcess(companyEntity.getRecruitmentProcess())
+                .welfare(companyEntity.getWelfare())
+                .build();
     }
 }

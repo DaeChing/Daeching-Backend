@@ -1,12 +1,11 @@
 package com.example.daeching.company;
 
+import com.example.daeching.company.dto.CompanyDto;
 import com.example.daeching.company.dto.RecruitmentsDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -19,5 +18,10 @@ public class CompanyController {
         companyService.registerRecruitments(recruitmentsDto);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/companies/{companyId}")
+    public ResponseEntity<CompanyDto> viewCompanyDetail(@PathVariable Long companyId) {
+        return new ResponseEntity<>(companyService.viewCompanyDetail(companyId), HttpStatus.OK);
     }
 }

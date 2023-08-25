@@ -1,6 +1,5 @@
 package com.example.daeching.company.dto;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,10 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Getter
-public class RecruitmentsDto {
-    private Long score;
+public class CompanyDto {
+    private Long companyId;
     private String imageUrl;
-    private String name;
+    private Long score;
     private String introduction;
     private String mainTask;
     private String qualificationRequirements;

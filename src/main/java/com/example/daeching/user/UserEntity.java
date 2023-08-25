@@ -1,6 +1,7 @@
 package com.example.daeching.user;
 
 import com.example.daeching.common.Role;
+import com.example.daeching.company.CompanyEntity;
 import com.example.daeching.resume.ResumeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,4 +35,9 @@ public class UserEntity {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default
     List<ResumeEntity> resumeEntityList = new ArrayList<>();
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="company_id")
+    CompanyEntity company;
+
 }
