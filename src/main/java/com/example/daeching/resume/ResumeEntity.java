@@ -19,6 +19,8 @@ public class ResumeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resumeId;
 
+    private String introduction;
+
     private String portfolio;
 
     private String resume;
