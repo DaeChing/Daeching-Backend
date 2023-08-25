@@ -5,6 +5,9 @@ import com.example.daeching.company.dto.RecruitmentsDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class CompanyService {
@@ -41,5 +44,29 @@ public class CompanyService {
                 .recruitmentProcess(companyEntity.getRecruitmentProcess())
                 .welfare(companyEntity.getWelfare())
                 .build();
+    }
+
+    public List<CompanyDto> viewAllCompanyList() {
+        List<CompanyDto> companyDtoList = new ArrayList<>();
+
+        List<CompanyEntity> companyEntityList = companyRepository.findAll();
+
+        for(CompanyEntity companyEntity : companyEntityList) {
+            CompanyDto companyDto = CompanyDto.builder()
+                    .companyId(companyEntity.getCompanyId())
+                    .imageUrl(companyEntity.getImageUrl())
+                    .score(companyEntity.getScore())
+                    .introduction(companyEntity.getIntroduction())
+                    .mainTask(companyEntity.getMainTask())
+                    .qualificationRequirements(companyEntity.getQualificationRequirements())
+                    .preferredQualifications(companyEntity.getPreferredQualifications())
+                    .recruitmentProcess(companyEntity.getRecruitmentProcess())
+                    .welfare(companyEntity.getWelfare())
+                    .build();
+
+            companyDtoList.add(companyDto);
+        }
+
+        return companyDtoList;
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 public class CompanyController {
@@ -20,8 +22,13 @@ public class CompanyController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("/companies/{companyId}")
+    @GetMapping("companies/{companyId}")
     public ResponseEntity<CompanyDto> viewCompanyDetail(@PathVariable Long companyId) {
         return new ResponseEntity<>(companyService.viewCompanyDetail(companyId), HttpStatus.OK);
+    }
+
+    @GetMapping("companies")
+    public ResponseEntity<List<CompanyDto>> viewCompanyList() {
+        return new ResponseEntity<>(companyService.viewAllCompanyList(),HttpStatus.OK);
     }
 }
