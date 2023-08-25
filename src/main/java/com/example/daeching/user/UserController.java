@@ -1,5 +1,6 @@
 package com.example.daeching.user;
 
+import com.example.daeching.user.dto.LoginDto;
 import com.example.daeching.user.dto.SignUpDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,5 +20,10 @@ public class UserController {
         userService.singUp(signUpDto);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<LoginDto> login(@RequestBody LoginDto loginDto) {
+        return new ResponseEntity<>(userService.login(loginDto), HttpStatus.OK);
     }
 }
